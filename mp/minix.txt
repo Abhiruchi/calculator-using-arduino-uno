@@ -1,0 +1,19 @@
+1: cd..
+cd /usr/src/commands/cal
+vi cal.c
+make make changes reboot
+2: user add -m -g users ruchi
+passwd ruchi
+3:stty erase^w
+4:cd /usr/src/servers/is
+vi dmp_kernel.c
+PUBLIC VOID irqtab_dmp
+4:cd ..
+cd /usr/src/kernel
+vi main.c reboor
+change announce
+cd ..
+make clean
+make
+make install
+reboot

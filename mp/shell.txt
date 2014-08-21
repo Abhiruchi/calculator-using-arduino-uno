@@ -1,0 +1,245 @@
+1:#!/bin/bash
+#
+# Linux Shell Scripting Tutorial 1.05r3, Summer-2002
+#
+# Written by Vivek G. Gite <vivek@nixcraft.com>
+#
+# Latest version can be found at http://www.nixcraft.com/
+#
+# Q1.Script to sum to nos
+#
+
+if [ $# -ne 2 ]
+then
+    echo "Usage - $0   x    y"
+    echo "        Where x and y are two nos for which I will print sum"
+    exit 1
+fi
+    echo "Sum of $1 and $2 is `expr $1 + $2`"
+#
+# ./ch.sh: vivek-tech.com to nixcraft.com referance converted using this tool
+# See the tool at http://www.nixcraft.com/uniqlinuxfeatures/tools/
+#
+
+2:#!/bin/bash
+#
+# Linux Shell Scripting Tutorial 1.05r3, Summer-2002
+#
+# Written by Vivek G. Gite <vivek@nixcraft.com>
+#
+# Latest version can be found at http://www.nixcraft.com/
+#
+# Q2. Script to find out bigest number
+#
+# Algo:
+#      1) START: Take three nos as n1,n2,n3.
+#      2) Is n1 is greater than n2 and n3, if yes 
+#         print n1 is bigest no goto step 5, otherwise goto next step
+#      3) Is n2 is greater than n1 and n3, if yes 
+#         print n2 is bigest no goto step 5, otherwise goto next step
+#      4) Is n3 is greater than n1 and n2, if yes 
+#         print n3 is bigest no goto step 5, otherwise goto next step
+#      5) END
+#
+#
+
+    if [ $# -ne 3 ]
+    then
+	echo "$0: number1 number2 number3 are not given" >&2
+        exit 1    
+    fi
+    n1=$1
+    n2=$2
+    n3=$3
+    if [ $n1 -gt $n2 ] && [ $n1 -gt $n3 ]
+    then
+	echo "$n1 is Bigest number"
+    elif [ $n2 -gt $n1 ] && [ $n2 -gt $n3 ]         
+    then
+	echo "$n2 is Bigest number"
+    elif [ $n3 -gt $n1 ] && [ $n3 -gt $n2 ]         
+    then
+        echo "$n3 is Bigest number"
+    elif [ $1 -eq $2 ] && [ $1 -eq $3 ] && [ $2 -eq $3 ]
+    then
+	echo "All the three numbers are equal"    
+    else
+        echo "I can not figure out which number is biger"    
+    fi    
+
+#
+# ./ch.sh: vivek-tech.com to nixcraft.com referance converted using this tool
+# See the tool at http://www.nixcraft.com/uniqlinuxfeatures/tools/
+#
+
+3:#!/bin/bash
+#
+# Linux Shell Scripting Tutorial 1.05r3, Summer-2002
+#
+# Written by Vivek G. Gite <vivek@nixcraft.com>
+#
+# Latest version can be found at http://www.nixcraft.com/
+#
+# Q3
+# Algo:
+#       1) START: set value of i to 5 (since we want to start from 5, if you
+#          want to start from other value put that value)
+#       2) Start While Loop
+#       3) Chechk, Is value of i is zero, If yes goto step 5 else
+#          continue with next step
+#       4) print i, decement i by 1 (i.e. i=i-1 to goto zero) and
+#          goto step 3
+#       5) END
+#
+i=5
+while test $i != 0
+do
+	echo "$i
+"
+	i=`expr $i - 1`
+done
+#
+# ./ch.sh: vivek-tech.com to nixcraft.com referance converted using this tool
+# See the tool at http://www.nixcraft.com/uniqlinuxfeatures/tools/
+#
+
+4:#!/bin/bash
+#
+# Linux Shell Scripting Tutorial 1.05r3, Summer-2002
+#
+# Written by Vivek G. Gite <vivek@nixcraft.com>
+#
+# Latest version can be found at http://www.nixcraft.com/
+#
+# Q4
+#
+
+if test $# = 3
+then
+	case $2 in
+	 +) let z=$1+$3;;
+	 -) let z=$1-$3;;
+	 /) let z=$1/$3;;
+	 x|X) let z=$1*$3;;
+	 *) echo Warning - $2 invalied operator, only +,-,x,/ operator allowed
+	    exit;;
+	esac
+	echo Answer is $z
+else
+	echo "Usage - $0   value1  operator value2"
+	echo "        Where, value1 and value2 are numeric values"
+	echo "               operator can be +,-,/,x (For Multiplication)"
+fi
+
+
+#
+# ./ch.sh: vivek-tech.com to nixcraft.com referance converted using this tool
+# See the tool at http://www.nixcraft.com/uniqlinuxfeatures/tools/
+#
+
+5:#!/bin/bash
+#
+# Linux Shell Scripting Tutorial 1.05r3, Summer-2002
+#
+# Written by Vivek G. Gite <vivek@nixcraft.com>
+#
+# Latest version can be found at http://www.nixcraft.com/
+#
+# Q5
+#
+echo "Hello, $LOGNAME"
+echo "Current date is `date`"
+echo "User is `who i am`"
+echo "Current direcotry `pwd`"
+
+#
+# ./ch.sh: vivek-tech.com to nixcraft.com referance converted using this tool
+# See the tool at http://www.nixcraft.com/uniqlinuxfeatures/tools/
+#
+
+6:#!/bin/bash
+#
+# Linux Shell Scripting Tutorial 1.05r3, Summer-2002
+#
+# Written by Vivek G. Gite <vivek@nixcraft.com>
+#
+# Latest version can be found at http://www.nixcraft.com/
+#
+# Script to reverse given no
+#
+# Algo:
+#       1) Input number n
+#       2) Set rev=0, sd=0
+#   	3) Find single digit in sd as n % 10 it will give (left most digit)
+#       4) Construct revrse no as rev * 10 + sd
+#       5) Decrment n by 1
+#       6) Is n is greater than zero, if yes goto step 3, otherwise next step
+#       7) Print rev
+#
+if [ $# -ne 1 ]
+then
+    echo "Usage: $0   number"
+    echo "       I will find reverse of given number"
+    echo "       For eg. $0 123, I will print 321"
+    exit 1
+fi
+
+n=$1
+rev=0
+sd=0
+
+while [ $n -gt 0 ]
+do
+    sd=`expr $n % 10`
+    rev=`expr $rev \* 10  + $sd`
+    n=`expr $n / 10`
+done
+    echo  "Reverse number is $rev"
+
+#
+# ./ch.sh: vivek-tech.com to nixcraft.com referance converted using this tool
+# See the tool at http://www.nixcraft.com/uniqlinuxfeatures/tools/
+#
+
+7:#!/bin/bash
+#
+# Linux Shell Scripting Tutorial 1.05r3, Summer-2002
+#
+# Written by Vivek G. Gite <vivek@nixcraft.com>
+#
+# Latest version can be found at http://www.nixcraft.com/
+#
+# Algo:
+#       1) Input number n
+#       2) Set sum=0, sd=0
+#   	3) Find single digit in sd as n % 10 it will give (left most digit)
+#       4) Construct sum no as sum=sum+sd
+#       5) Decrment n by 1
+#       6) Is n is greater than zero, if yes goto step 3, otherwise next step
+#       7) Print sum
+#
+if [ $# -ne 1 ]
+then
+    echo "Usage: $0   number"
+    echo "       I will find sum of all digit for given number"
+    echo "       For eg. $0 123, I will print 6 as sum of all digit (1+2+3)"
+    exit 1
+fi
+
+n=$1
+sum=0
+sd=0
+while [ $n -gt 0 ]
+do
+    sd=`expr $n % 10`
+    sum=`expr $sum + $sd`
+    n=`expr $n / 10`
+done
+    echo  "Sum of digit for numner is $sum"
+    
+
+#
+# ./ch.sh: vivek-tech.com to nixcraft.com referance converted using this tool
+# See the tool at http://www.nixcraft.com/uniqlinuxfeatures/tools/
+#
+
